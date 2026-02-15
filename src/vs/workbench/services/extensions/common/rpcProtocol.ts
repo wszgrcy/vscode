@@ -388,13 +388,7 @@ export class RPCProtocol extends Disposable implements IRPCProtocol {
 			) {
 				delete this._cancelInvokedHandlers[callId];
 				const msg = MessageIO.serializeReplyOK(req, r, this._uriReplacer);
-				this._logger?.logOutgoing(
-					msg.byteLength,
-					req,
-					RequestInitiator.OtherSide,
-					`reply:`,
-					r,
-				);
+				this._logger?.logOutgoing(msg.byteLength, req, RequestInitiator.OtherSide, `reply:`, r);
 				this._protocol.send(msg);
 			}
 		}, (err) => {
